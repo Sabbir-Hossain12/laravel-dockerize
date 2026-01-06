@@ -32,18 +32,6 @@ services:
     networks:
       - laravel
 
-
-#  composer:
-#    image: composer:latest
-#    container_name: my_composer
-#    working_dir: /var/www/html
-#    volumes:
-#      - ./src:/var/www/html
-#    depends_on:
-#      - php
-#    networks:
-#      - laravel
-
   mysql:
     image: mysql:latest
     container_name: my_mysql
@@ -81,3 +69,14 @@ services:
       - ./src:/var/www/html
     networks:
       - laravel
+
+  #  composer:
+  #    image: composer:latest
+  #    container_name: my_composer
+  #    working_dir: /var/www/html
+  #    volumes:
+  #      - ./src:/var/www/html
+  #    depends_on:
+  #      - php
+  #    networks:
+  #      - laravel
