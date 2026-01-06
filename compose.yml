@@ -8,7 +8,7 @@ services:
     image: nginx:latest
     container_name: my_nginx
     ports:
-      - "80:80"
+      - "8000:80"
       - "443:443"
     volumes:
       - ./src:/var/www/html
@@ -33,16 +33,16 @@ services:
       - laravel
 
 
-  composer:
-    image: composer:latest
-    container_name: my_composer
-    working_dir: /var/www/html
-    volumes:
-      - ./src:/var/www/html
-    depends_on:
-      - php
-    networks:
-      - laravel
+#  composer:
+#    image: composer:latest
+#    container_name: my_composer
+#    working_dir: /var/www/html
+#    volumes:
+#      - ./src:/var/www/html
+#    depends_on:
+#      - php
+#    networks:
+#      - laravel
 
   mysql:
     image: mysql:latest
@@ -71,5 +71,13 @@ services:
       PMA_PASSWORD: example
     depends_on:
       - mysql
+    networks:
+      - laravel
+
+  node:
+    image: node:20-alpine
+    working_dir: /var/www/html
+    volumes:
+      - ./src:/var/www/html
     networks:
       - laravel
