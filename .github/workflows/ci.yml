@@ -68,6 +68,18 @@ jobs:
       - name: Build assets
         run: npm run build
 
+      # copy .env.example to .env
+      - name: Create .env file
+        run: | 
+          cp .env.example .env
+        env:
+          DB_CONNECTION: mysql
+          DB_HOST: mysql
+          DB_PORT: 3306
+          DB_DATABASE: "test_database"
+          DB_USERNAME: "test"
+          DB_PASSWORD: "test"
+
       # 8. Generate app key
       - name: Generate app key
         run: php artisan key:generate
