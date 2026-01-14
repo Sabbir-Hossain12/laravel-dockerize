@@ -20,11 +20,11 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t docker.io/sabbir/laravel-app:latest .
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/laravel-app:latest .
 
       - name: Push Docker image
         run: |
-          docker push docker.io/sabbir/laravel-app:latest
+          docker push ${{ secrets.DOCKER_USERNAME }}/laravel-app:latest
 
       - name: Deploy via SSH
         uses: appleboy/ssh-action@v0.1.10
